@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: Aurionpro
+Java-Version: 1.6
+Implementation-Vendor: Integro Technologies Pte Ltd	
+Implementation-Title: Collateral Management System (CMS)
+Implementation-Version: 1.0 Build 409
+CMS-Version: 1.0
+Class-Path: hibernate-mapping.jar spring-context.jar castor-compare.ja
+ r castor-mapping.jar message-resource.jar velocity-template.jar prope
+ rties.jar cms.jar integrobase.jar uiinfrabase.jar ofacomp.jar ofacomp
+ ui.jar stp.jar
+

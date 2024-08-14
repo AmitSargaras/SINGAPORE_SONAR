@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>
+    <form-beans type="org.apache.struts.action.ActionFormBean">
+		<form-bean name="LmtDetailForm" type="com.integrosys.cms.ui.manualinput.limit.LmtDetailForm">
+	 	</form-bean>
+	 	
+		<form-bean name="AADetailForm" type="com.integrosys.cms.ui.manualinput.aa.AADetailForm">
+	 	</form-bean>
+    
+	 	<form-bean name="XRefDetailForm" type="com.integrosys.cms.ui.manualinput.limit.XRefDetailForm">
+	 	</form-bean>
+	
+	 	<form-bean name="LmtSecMappingForm" type="com.integrosys.cms.ui.manualinput.limit.LmtSecMappingForm">
+	 	</form-bean>
+	
+		<form-bean name="LmtListForm" type="com.integrosys.cms.ui.manualinput.limit.LmtListForm">
+		</form-bean>
+	 	
+		<form-bean name="ManualInputCustomerForm" type="com.integrosys.cms.ui.manualinput.customer.ManualInputCustomerForm">
+	    </form-bean>
+	    
+	    <form-bean name="ManualInputCustomerInfoForm" type="com.integrosys.cms.ui.manualinput.customer.ManualInputCustomerInfoForm">
+	    </form-bean>
+		<form-bean name="CoBorrowerDetailsForm" type="com.integrosys.cms.ui.manualinput.customer.CoBorrowerDetailsForm"/>
+		
+		<form-bean name="SecDetailForm" type="com.integrosys.cms.ui.manualinput.security.SecDetailForm">
+		</form-bean>
+	
+		<form-bean name="SecPledgorDtlForm" type="com.integrosys.cms.ui.manualinput.security.SecPledgorDtlForm">
+		</form-bean>
+		
+			<form-bean name="MIPartyGroupForm" type="com.integrosys.cms.ui.manualinput.partygroup.MIPartyGroupForm">
+		</form-bean>
+		
+		<form-bean name="LmtCovenantDetailForm" type="com.integrosys.cms.ui.manualinput.limit.covenant.LmtCovenantDetailForm">
+		</form-bean>
+		<form-bean name="LineCovenantDetailForm" type="com.integrosys.cms.ui.manualinput.line.covenant.LineCovenantDetailForm">
+		</form-bean>
+		
+    </form-beans>
+            
+    <action-mappings type="com.integrosys.base.uiinfra.common.IntegroActionMapping">
+		<action path="/MILimit" type="com.integrosys.cms.ui.manualinput.limit.LmtDetailAction" name="LmtDetailForm" validate="false" scope="request">
+		    <forward name="read_page"    path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_read.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	     <forward name="read_rejected_page"    path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_read_rejectedflow.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="update_page"  path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_update.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	     <forward name="update_page_rejected"  path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_update_rejected.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="process_page" path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_process.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="close_page"   path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_close.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+		    <forward name="delete_page"  path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_delete.jsp"/>
+		   	  	<set-property property="title" value="title.misecurity"/>
+		    </forward>		
+		    <forward name="create_acnt_detail" path="/MIAcntDetail.do?event=prepare_create" />
+		    <forward name="update_acnt_detail" path="/MIAcntDetail.do?event=prepare_update" />
+		    <forward name="view_acnt_detail" path="/MIAcntDetail.do?event=read" />
+		    
+		    <forward name="create_acnt_detail_ts" path="/MIAcntDetail.do?event=prepare_create_ts"/>
+		     <forward name="view_acnt_detail_ts" path="/MIAcntDetail.do?event=read_ts" />
+   		    <forward name="update_acnt_detail_ts" path="/MIAcntDetail.do?event=prepare_update_ts" />
+		      <forward name="updateStatus_acnt_detail_ts" path="/MIAcntDetail.do?event=prepare_updateStatus_ts" />		     
+		    
+		     <forward name="view_acnt_detail_ubs" path="/MIAcntDetail.do?event=read_ubs" />
+		     <forward name="view_acnt_detail_ubs_rejected" path="/MIAcntDetail.do?event=read_ubs_rejected" />
+		    <forward name="create_acnt_detail_ubs" path="/MIAcntDetail.do?event=prepare_create_ubs" />
+		    <forward name="create_covenant_detail_ubs" path="/MILimitCovenant.do?event=prepare_edit_covenant_detail" />
+		    <forward name="view_covenant_detail_ubs" path="/MILimitCovenant.do?event=prepare_edit_covenant_detail" />
+		    
+		    <forward name="update_acnt_detail_ubs" path="/MIAcntDetail.do?event=prepare_update_ubs" />
+		    <forward name="update_acnt_detail_ubs_rejected" path="/MIAcntDetail.do?event=prepare_update_ubs_rejected" />
+		    
+		     <forward name="close_acnt_detail_ubs" path="/MIAcntDetail.do?event=prepare_close_ubs" />
+		      <forward name="reopen_acnt_detail_ubs" path="/MIAcntDetail.do?event=prepare_reopen_ubs" />
+		       <forward name="close_acnt_detail_ubs_rejected" path="/MIAcntDetail.do?event=prepare_close_ubs_rejected" />
+		      <forward name="reopen_acnt_detail_ubs_rejected" path="/MIAcntDetail.do?event=prepare_reopen_ubs_rejected" />
+		      
+		      <forward name="updateStatus_acnt_detail_ubs" path="/MIAcntDetail.do?event=prepare_updateStatus_ubs" />
+		      
+		    <forward name="view_security_detail" path="/MILmtSecDetail.do?event=read_security" />
+		    <forward name="view_security_detail_rejected" path="/MILmtSecDetail.do?event=read_security_rejected" />
+		    <forward name="create_lmtsec_detail" path="/MILmtSecDetail.do?event=prepare_create" />	
+		    <forward name="ack_submit" path="/template/common_template.jsp">
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/ack_submit_lmt.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	     <forward name="ack_submit_rejected" path="/template/common_template.jsp">
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/ack_submit_rejectedFlow_lmt.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="ack_save"   path="/template/common_template.jsp">
+		   	  	<set-property property="rightFrame" value="/common/ack_save.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="ack_save_rejected"   path="/template/common_template.jsp">
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/ack_save_rejected.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="ack_approve" path="/template/common_template.jsp">
+		   	  	<set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="ack_reject" path="/template/common_template.jsp">
+		   	  	<set-property property="rightFrame" value="/common/ack_reject.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+		    <forward name="ack_close" path="/template/common_template.jsp">
+		   	  	<set-property property="rightFrame" value="/common/ack_close.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+		    <forward name="wip" path="/template/common_template.jsp">
+		      	<set-property property="rightFrame" value="/common/wip.html"/>
+			    <set-property property="title" value="title.milimit"/>
+		    </forward>	
+		    <forward name="refresh_loc" path="/manualinput/limit/orglist.jsp" />
+	 	    <forward name="refresh_prod" path="/manualinput/limit/prodtypelist.jsp" />
+	 	    <forward name="refresh_fac" path="/manualinput/limit/facnamelist.jsp" />
+   	 	    <forward name="refresh_risk" path="/manualinput/limit/risktypelist.jsp" />
+	 	    <forward name="refresh_fac_detail" path="/manualinput/limit/facdetaillist.jsp" />
+	 	    <forward name="refresh_inr_sanc" path="/manualinput/limit/fac_sanc_amount.jsp" />
+	 	    <forward name="refresh_fac_liability" path="/manualinput/limit/facliabilitylist.jsp" />
+	 	    <!--Start: Uma:Phase 3 CR :Limit Calculation Dashboard -->
+	 	    <forward name="create_limit_dashboard" path="/template/common_template.jsp" >
+	 	      	<set-property property="rightFrame" value="/manualinput/limit/limitDashboard.jsp"/>
+		   	  	<set-property property="title" value="title.limit.dashboard"/>
+		   	</forward> 
+		   	<forward name="add_limit_detail" path="/template/common_template.jsp">
+	    		<set-property property="rightFrame" value="/manualinput/limit/limitDashboard.jsp"/>
+		  		<set-property property="title" value="title.limit.dashboard"/>
+	  	    </forward>
+	  	    <forward name="update_return" path="/MILimit.do?event=update_return"/>
+	  	    <forward name="update_return_rejected" path="/MILimit.do?event=update_return_rejected"/>
+	 	  <!--End: Uma:Phase 3 CR :Limit Calculation Dashboard -->
+		</action>
+		
+		
+		<action path="/MILimitCovenant" type="com.integrosys.cms.ui.manualinput.limit.covenant.LmtCovenantDetailAction" name="LmtCovenantDetailForm" validate="false" scope="request">
+		    <forward name="read_covenant_page"    path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_covenant_view.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	     <forward name="update_covenant_page"  path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/milimit_covenant.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	     <forward name="refresh_inco_description" path="/manualinput/covenant_inco_desc.jsp" />
+	  	     <forward name="add_covenant_page" path="/MILimit.do?event=update_return"/>
+	  	     <forward name="cancel_covenant_page" path="/MILimit.do?event=update_return"/>
+	  	     <forward name="ok_covenant_page" path="/MILimit.do?event=read_return"/>
+	  	     <forward name="ok_covenant_page_process" path="/MILimit.do?event=process"/>
+	  	     <forward name="ok_covenant_page_prepare_close" path="/MILimit.do?event=prepare_close"/>
+	  	     <forward name="ok_covenant_page_prepare_delete" path="/MILimit.do?event=prepare_delete"/>
+	  	     <forward name="ok_covenant_page_process_delete" path="/MILimit.do?event=process_delete"/>
+	  	     
+	  	     <forward name="refresh_goods_master" path="/manualinput/limit/milimit_covenant_goods_dropdown_list.jsp"/>
+	  	     
+		</action>
+		
+		<action path="/MILineCovenant" type="com.integrosys.cms.ui.manualinput.line.covenant.LineCovenantDetailAction" name="LineCovenantDetailForm" validate="false" scope="request">
+		    <forward name="read_covenant_page"    path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/line_covenant_view.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	     <forward name="update_covenant_page"  path="/template/common_template.jsp" >
+		   	  	<set-property property="rightFrame" value="/manualinput/limit/line_covenant.jsp"/>
+		   	  	<set-property property="title" value="title.milimit"/>
+	  	    </forward>
+	  	    <forward name="refresh_inco_description" path="/manualinput/covenant_inco_desc.jsp" />
+	  	     <forward name="add_covenant_page" path="/MIAcntDetail.do?event=return_from_line_covenant"/>
+	  	     <forward name="cancel_covenant_page" path="/MIAcntDetail.do?event=return_from_line_covenant"/>
+	  	     <forward name="ok_covenant_page" path="/MIAcntDetail.do?event=read_sub_acnt"/>
+	  	     <!--  <forward name="ok_covenant_page_process" path="/MIAcntDetail.do?event=read_sub_acnt"/> -->
+	  	     <forward name="ok_covenant_page_process" path="/MIAcntDetail.do?event=read_ubs"/>
+	  	     <forward name="ok_covenant_page_update_status" path="/MIAcntDetail.do?event=prepare_updateStatus_ubs"/>
+	  	      <forward name="ok_covenant_page_close_ubs" path="/MIAcntDetail.do?event=prepare_close_ubs"/>
+	  	      <forward name="ok_covenant_page_reopen_ubs" path="/MIAcntDetail.do?event=prepare_reopen_ubs"/>
+	  	      
+	  	     <forward name="refresh_goods_master" path="/manualinput/limit/milimit_covenant_goods_dropdown_list.jsp"/>
+		</action>
+		
+		
+    
+		<action path="/MIAADetail" type="com.integrosys.cms.ui.manualinput.aa.AADetailAction" name="AADetailForm" validate="false" scope="request">
+		    <forward name="view_aa" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/view_aa_detail.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>	    
+	  	     <forward name="add_other_covenant_page" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/add_other_covenant_details.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>	
+	  	     <forward name="edit_other_covenant_page" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/edit_other_covenant_details.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    
+	  	    <forward name="delete_other_covenant_details" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/delete_other_covenant_details.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>	
+	  	    <forward name="list_other_covenant_page" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/list_other_covenants.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="view_other_covenant_details" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/view_other_covenant_details.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	     <forward name="check_list_other_covenant_page" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/checker_list_other_covenants.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="edit_aa" path="/template/common_template.jsp" >
+				<set-property property="rightFrame" value="/manualinput/aa/edit_aa_detail.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="checker_edit_aadetail_page" path="/template/common_template.jsp">
+				<set-property property="rightFrame" value="/manualinput/aa/aa_checker_edit.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="work_in_process_page" path="/template/common_template.jsp">
+				<set-property property="title" value="title.manualinput.aa"/>
+				<set-property property="rightFrame" value="/common/wip.html"/>
+	  	    </forward>
+	  	    <forward name="common_approve_page" path="/template/common_template.jsp">
+				<set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="common_reject_page" path="/template/common_template.jsp">
+				<set-property property="rightFrame" value="/common/ack_reject.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="common_close_page" path="/template/common_template.jsp">
+				<set-property property="rightFrame" value="/common/ack_close.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="common_submit_page" path="/template/common_template.jsp">
+				<set-property property="title" value="title.manualinput.aa"/>
+				<set-property property="rightFrame" value="/common/ack_submit.jsp"/>
+	  	    </forward>
+	  	    <forward name="after_to_track" path="/template/common_template.jsp">
+				<set-property property="rightFrame" value="/manualinput/aa/view_aa_detail.jsp"/>
+				<set-property property="title" value="title.manualinput.aa"/>
+	  	    </forward>
+	  	    <forward name="error_message_page" path="/template/common_template.jsp">
+				<set-property property="title" value="title.manualinput.aa"/>
+				<set-property property="rightFrame" value="/common/error_message.jsp"/>
+	  	    </forward>
+		    <forward name="edit_agreement" path="/TradingAgreement.do?event=maker_update_agreement" />
+		    <forward name="add_agreement" path="/TradingAgreement.do?event=maker_add_agreement" />
+		    <forward name="refresh_cam" path="/manualinput/aa/refresh_cam_detail.jsp">				
+	  	    </forward>
+	  	    <forward name="view_cam_image_list" path="/template/common_template.jsp">
+				<set-property property="title" value="title.manualinput.aa"/>
+				<set-property property="rightFrame" value="/manualinput/aa/view_cam_image_list.jsp"/>
+	  	    </forward>
+	  	    <forward name="checker_view_cam_image_list" path="/template/common_template.jsp">
+				<set-property property="title" value="title.manualinput.aa"/>
+				<set-property property="rightFrame" value="/manualinput/aa/checker_view_cam_image_list.jsp"/>
+	  	    </forward>
+	  	      <forward name="print_image" path="/manualinput/aa/print_image_page.jsp"/>
+                <forward name="downloadImage" path="/manualinput/aa/popup.jsp" />
+                <forward name="image_gallary" path="/template/common_template.jsp">
+                	<set-property property="rightFrame" value="/manualinput/aa/image_gallary.jsp"/>
+                 	<set-property property="title" value="title.manualinput.aa"/>
+            	</forward>
+            	<forward name="imagePath"	path="/imageTag/imagePath.jsp" />
+            	
+            <forward name="deactive" path="/template/common_template.jsp">
+		      	<set-property property="rightFrame" value="/common/deactive.html"/>
+			    <set-property property="title" value="title.manualinput.aa"/>
+		    </forward>
+		</action>        
+		
+		<action path="/MIAcntDetail" type="com.integrosys.cms.ui.manualinput.limit.LmtXRefAction" name="XRefDetailForm" validate="false" scope="request">
+		    <forward name="read_xref" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_read.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	   	<forward name="update_sub_acnt" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update_ubs.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="update_sub_acnt_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update_ubs_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="read_sub_acnt" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_read_ubs.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	     <forward name="read_sub_acnt_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_read_ubs_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="update_xref" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="update_xref_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="update_xref_ubs" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update_ubs.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="update_xref_ts" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update_ts.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="read_xref_ts" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_read_ts.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>
+	  	    <forward name="update_xref_ubs_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update_ubs_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/>    
+	  	    </forward>	  	   
+	  	    <forward name="read_xref_ubs" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_read_ubs.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    <forward name="read_xref_ubs_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_read_ubs_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    <forward name="close_xref_ubs" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_close_ubs.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    <forward name="reopen_xref_ubs" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_reopen_ubs.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	     <forward name="close_xref_ubs_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_close_ubs_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    <forward name="reopen_xref_ubs_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_reopen_ubs_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    
+	  	    <forward name="updateStatus_xref_ubs" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_updateStatus_ubs.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    <forward name="updateStatus_xref_ts" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/acntdetail_update_ts.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    
+		    <forward name="read_return" path="/MILimit.do?event=read_return" />
+	  	    <forward name="update_return" path="/MILimit.do?event=update_return" />
+	  	    <forward name="update_return_rejected" path="/MILimit.do?event=update_return_rejected" />
+	  	    <forward name="process_return" path="/MILimit.do?event=process_return"/>
+	  	    <forward name="close_return" path="/MILimit.do?event=close_return" />
+	  	    <forward name="track_return" path="/MILimit.do?event=track_return"/>
+		    <forward name="refresh_country" path="/manualinput/limit/systemlist.jsp" />	
+		    
+		    <forward name="fetch_utilizedAmt" path="/manualinput/limit/fetchUtilizedAmt.jsp" />
+		    <forward name="fetch_LiabBranch" path="/manualinput/limit/fetchLiabBranch.jsp" />
+		    
+		    <forward name="fetch_CoBorrowerName_FCUBS" path="/manualinput/limit/fetchCoBorrowerName_FCUBS.jsp" />
+		    <forward name="fetch_CoBorrowerName_BH" path="/manualinput/limit/fetchCoBorrowerName_FCUBS.jsp" />
+		    <forward name="fetch_CoBorrowerName_HK" path="/manualinput/limit/fetchCoBorrowerName_FCUBS.jsp" />
+		    <forward name="fetch_CoBorrowerName_GC" path="/manualinput/limit/fetchCoBorrowerName_FCUBS.jsp" />
+		    <forward name="fetch_CoBorrowerName_SG" path="/manualinput/limit/fetchCoBorrowerName_FCUBS.jsp" />
+		    
+		    <forward name="create_covenant_detail_line" path="/MILineCovenant.do?event=prepare_edit_covenant_detail" />
+		    <forward name="view_covenant_detail_line" path="/MILineCovenant.do?event=prepare_edit_covenant_detail" />
+		    
+		</action>
+		
+		<action path="/MILmtSecDetail" type="com.integrosys.cms.ui.manualinput.limit.LimitSecMapAction" name="LmtSecMappingForm" validate="false" scope="request">
+		    <forward name="update_lmtsec" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/lmtsecmap_update.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    <forward name="view_lmtsec" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/lmtsecmap_view.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+	  	    <forward name="view_lmtsec_rejected" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/lmtsecmap_view_rejected.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+		    <forward name="update_return" path="/MILimit.do?event=update_return" />	
+		    <forward name="new_sec" path="/MISecurity.do?event=prepare_create" />			
+		</action>
+		
+		<action path="/MILimitList" type="com.integrosys.cms.ui.manualinput.limit.LimitListAction" name="LmtListForm" validate="false" scope="request">
+		    <forward name="limitList" path="/template/common_template.jsp">
+	   	  	<set-property property="rightFrame" value="/manualinput/limit/limitList.jsp"/>
+	   	  	<set-property property="title" value="title.acntdetail"/> 
+	  	    </forward>
+		    <forward name="limitDetail" path="/MILimit.do?event=read"/>
+		     <forward name="rejectedLimitDetail" path="/MILimit.do?event=readRejected"/>
+		    <!--   added  by shiv    -->
+		    <forward name="custlimitDetail" path="/MILimit.do?event=custread"/>
+		     <!--   added  by shiv   end -->
+		    <forward name="limitDel" path="/MILimit.do?event=prepare_delete"/>
+		</action>
+		
+	  <action path="/ManualInputCustomer" type="com.integrosys.cms.ui.manualinput.customer.ManualInputCustomerAction" name="ManualInputCustomerInfoForm" validate="false" scope="request">
+		<forward name="prepare_list_page" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/customer_search.jsp"/>
+		</forward>
+		<forward name="prepare_list_page_brmaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/customer_search_brmaker.jsp"/>
+		</forward>
+		<forward name="prepare_list_page_checker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/customer_search_checker.jsp"/>
+		</forward>
+		<forward name="prepare_list_page_brchecker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/customer_search_brchecker.jsp"/>
+		</forward>
+		
+			 <forward name="calculate_financial_detail" path="/manualinput/customer/calculate_financial_detail.jsp" />	
+		<!--<forward name="view" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/customer_detail_view.jsp"/>
+		</forward>
+		--><forward name="view" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details.jsp"/>
+		</forward>
+		
+		<forward name="view_branch" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details_branch.jsp"/>
+		</forward>
+		
+		<forward name="view_for_checker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details_checker.jsp"/>
+		</forward>
+		<forward name="display_summary_details" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/create_partygroup_details.jsp"/>
+		</forward>
+		
+		<forward name="view_summary_details" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details.jsp"/>
+		</forward>
+		<forward name="view_summary_details_branch" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details_branch.jsp"/>
+		</forward>
+		<forward name="view_summary_details_checker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details_checker.jsp"/>
+		</forward>
+		<forward name="edit_summary_details" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/edit_partygroup_details.jsp"/>
+		</forward>
+			<forward name="process_summary_details" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/process_partygroup_details.jsp"/>
+		</forward>
+		
+		<forward name="ajax_search_cif_result" path="/manualinput/customer/customer_detail_ajax_result.jsp"/>
+	 <!--		Added by Sandeep Shinde on 25-Feb-2011 Start-->
+		
+		<forward name="list_customers" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/list_customers.jsp"/>
+		</forward>
+		
+		<forward name="list_customers_branch" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/list_customers_branch.jsp"/>
+		</forward>
+		
+		<forward name="display_summary_details" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/create_partygroup_details.jsp"/>
+		</forward>
+		
+		<forward name="prepare_create_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/create_partygroup_details.jsp"/>
+			<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="prepare_create_customer_brmaker" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/create_partygroup_details_brmaker.jsp"/>
+			<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="create_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_submit.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>	
+		
+		<forward name="save_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_save.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="totrack_maker" path="/template/common_template.jsp">
+			<!--<set-property property="rightFrame" value="/manualinput/customer/to_track_view.jsp"/>
+			--><set-property property="rightFrame" value="/manualinput/customer/to_track_partygroup_details.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="maker_save_process" path="/template/common_template.jsp">
+			<!--<set-property property="rightFrame" value="/manualinput/customer/to_track_view.jsp"/>
+			--><set-property property="rightFrame" value="/manualinput/customer/process_partygroup_details.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="maker_save_process_brmaker" path="/template/common_template.jsp">
+			<!--<set-property property="rightFrame" value="/manualinput/customer/to_track_view.jsp"/>
+			--><set-property property="rightFrame" value="/manualinput/customer/process_partygroup_details_brmaker.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="create_checker_process" path="/template/common_template.jsp">
+		<set-property property="rightFrame" value="/manualinput/customer/checker_partygroup_details_view.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="create_checker_process_brchecker" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/checker_partygroup_details_view_brchecker.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="display_bank_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/display_bank_list.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="display_party_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/display_party_list.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		 <forward name="work_in_process" path="/template/common_template.jsp">
+                	  	<set-property property="title" value="title.misecurity"/>
+                <set-property property="rightFrame" value="/common/wip.html"/>
+               
+            </forward>
+		
+	 	<forward name="checker_approve_create_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+			<set-property property="title" value="title.manualinput.aa"/>
+  	    </forward>
+  	    
+  	    <forward name="checker_reject_create_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_reject.jsp"/>
+			<set-property property="title" value="title.manualinput.aa"/>
+  	    </forward>
+	  	    
+		<forward name="edit_customer_details" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/edit_partygroup_details.jsp"/>
+		</forward>
+		
+		<forward name="edit_customer_details_brmaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/edit_partygroup_details_brmaker.jsp"/>
+		</forward>
+		
+		<forward name="todo_checker_update" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/todo_checker_update.jsp"/>
+		</forward>
+		
+		<forward name="maker_update_customer" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/checker_update_partygroup_details.jsp"/>
+		</forward>
+		
+		<forward name="maker_update_customer_brmaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/checker_update_partygroup_details_brmaker.jsp"/>
+		</forward>
+				
+		<forward name="checker_approve_update_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+			<set-property property="title" value="title.manualinput.aa"/>
+  	    </forward>
+  	    
+  	    <forward name="checker_reject_update_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_reject.jsp"/>
+			<set-property property="title" value="title.manualinput.aa"/>
+  	    </forward>
+		
+			
+		<forward name="edit_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_submit.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>	
+		
+		<forward name="prepare_delete_customer" path="/template/common_template.jsp">
+			<!--<set-property property="rightFrame" value="/manualinput/customer/prepare_delete_customer.jsp"/>
+	   	  	-->
+	   	  	<set-property property="rightFrame" value="/manualinput/customer/prepare_delete_partygroup_details.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+	
+		<forward name="todo_checker_delete" path="/template/common_template.jsp">
+			<!--<set-property property="rightFrame" value="/manualinput/customer/todo_checker_delete.jsp"/>
+			-->
+			<set-property property="rightFrame" value="/manualinput/customer/todo_checker_delete_partygroup_details.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>	
+			
+		<forward name="delete_customer_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_submit.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>	
+		
+		<forward name="maker_delete_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_submit.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		 <forward name="refresh_state_id" path="/manualinput/customer/stateIdList.jsp"/>
+                
+        <forward name="refresh_region_id" path="/manualinput/customer/regionIdList.jsp"/>
+        
+         <forward name="refresh_rbi_ind_code" path="/manualinput/customer/rbiIndCodeList.jsp"/>
+                
+         <forward name="refresh_city_id" path="/manualinput/customer/securityIdList.jsp"/>
+         
+          <forward name="refresh_rm_id" path="/manualinput/customer/relationshipMgrList.jsp"/>
+          
+          <forward name="add_other_system" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_other_system.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="add_director" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_director.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<!-- add Shiv 300811 -->
+		<forward name="add_cri_fac_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_cri_facility.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="add_cri_credit_fac_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_cri_credit_facility.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="add_cri_loan_transfer_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_cri_loan_transfer.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="edit_cri_credit_facility_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/edit_cri_credit_facility.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="edit_cri_loan_transfer_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/edit_cri_loan_transfer.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="edit_cri_limit_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_cri_limit.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="view_cri_credit_fac_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/view_cri_credit_facility.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="view_cri_loan_transfer_list" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/view_cri_loan_transfer.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="refresh_fac_list" path="/manualinput/customer/facilitylist.jsp" />
+		<forward name="refresh_fac_detail_list" path="/manualinput/customer/facility_detail_list.jsp" />
+		<forward name="refresh_tranch_detail_list" path="/manualinput/customer/facility_tranch_list.jsp" />
+		
+		<forward name="return_cri_credit_details" path="/ManualInputCustomer.do?event=edit_cri_details"/>
+			
+		<!-- add Shiv 300811-->
+		 <forward name="edit_system" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/edit_other_system.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		 <forward name="edit_director" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/edit_director.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		 <forward name="delete_director" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/delete_director.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		 <forward name="to_track_view_director" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/view_director.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		 <forward name="edit_subline_party" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/edit_sub_line.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="edit_vendor" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/edit_vendor_name.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		 <forward name="delete_subline_party" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/delete_sub_line.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="delete_vendor" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/delete_vendor_name.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="delete_system" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/delete_other_system.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		
+		<forward name="add_sub_line" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_sub_line.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="add_vendor" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_vendor_name.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+          
+<!--		checker_todo_delete-->
+		<forward name="totrack_maker_delete" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<!--<set-property property="rightFrame" value="/manualinput/customer/to_track_view.jsp"/>
+			--><set-property property="rightFrame" value="/manualinput/customer/to_track_partygroup_details.jsp"/>
+		</forward>
+		
+		<forward name="checker_approve_delete_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+			<set-property property="title" value="title.manualinput.aa"/>
+  	    </forward>
+  	    
+  	    <forward name="checker_reject_delete_customer" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_reject.jsp"/>
+			<set-property property="title" value="title.manualinput.aa"/>
+  	    </forward>
+				
+		<forward name="process_page" path="/template/common_template.jsp" ><!--
+		   	<set-property property="rightFrame" value="//manualinput/customer/process_customer_details.jsp"/>
+		   	-->
+		   		<set-property property="rightFrame" value="//manualinput/customer/process_partygroup_details.jsp"/>
+		   	<set-property property="title" value="title.manualinput.aa"/>
+	  	</forward>
+	  	<forward name="process_page_brmaker" path="/template/common_template.jsp" ><!--
+		   	<set-property property="rightFrame" value="//manualinput/customer/process_customer_details.jsp"/>
+		   	-->
+		   		<set-property property="rightFrame" value="//manualinput/customer/process_partygroup_details_brmaker.jsp"/>
+		   	<set-property property="title" value="title.manualinput.aa"/>
+	  	</forward>
+	  	<forward name="prepare_close_page"   path="/template/common_template.jsp" >
+		   	<set-property property="rightFrame" value="//manualinput/customer/close_partygroup_details.jsp"/>
+		   	<set-property property="title" value="title.manualinput.aa"/>
+	  	</forward>
+	  	  	<forward name="prepare_close_page_brmaker"   path="/template/common_template.jsp" >
+		   	<set-property property="rightFrame" value="//manualinput/customer/close_partygroup_details_brmaker.jsp"/>
+		   	<set-property property="title" value="title.manualinput.aa"/>
+	  	</forward>
+	  	 <forward name="close_page" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_close.jsp"/>
+			<set-property property="title" value="title.manualinput.aa"/>
+	  	 </forward>
+	  	 
+	  	 <forward name="validate_pan_no_with_NSDL" path="/manualinput/customer/validatePanNo.jsp" />
+
+	  	 <forward name="validate_lei_code_with_CCIL" path="/manualinput/customer/validateLeiCode.jsp" />
+	  	 	  	 
+	  	 <forward name="populate_rm_data" path="/manualinput/customer/populateRMData.jsp" />
+	  	 
+	  	 <!-- 	Start:Uma Khot:Added for Valid Rating CR -->
+	  	<forward name="prepare_list_page_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/customer_search_partymaker.jsp"/>
+		</forward>
+		<forward name="list_customers_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/list_customers_partymaker.jsp"/>
+		</forward>
+		<forward name="edit_customer_details_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/edit_partygroup_details_partymaker.jsp"/>
+		</forward>
+		<forward name="view_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details_partymaker.jsp"/>
+		</forward>
+		 <forward name="add_other_system_partymaker" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/add_other_system_partymaker.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="edit_summary_details_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/edit_partygroup_details_partymaker.jsp"/>
+		</forward>
+		<forward name="process_summary_details_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/process_partygroup_details_partymaker.jsp"/>
+		</forward>
+		<forward name="display_summary_details_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/create_partygroup_details_partymaker.jsp"/>
+		</forward>
+		<forward name="edit_system_partymaker" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/edit_other_system_partymaker.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="delete_system_partymaker" path="/template/common_template.jsp">
+			<set-property property="rightFrame"  value="/manualinput/customer/delete_other_system_partymaker.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="view_summary_details_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+			<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details_partymaker.jsp"/>
+		</forward>
+		<forward name="view_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/view_partygroup_details_partymaker.jsp"/>
+		</forward>
+		 <forward name="prepare_close_page_partymaker"   path="/template/common_template.jsp" >
+		   	<set-property property="rightFrame" value="//manualinput/customer/close_partygroup_details_partymaker.jsp"/>
+		   	<set-property property="title" value="title.manualinput.aa"/>
+	  	</forward>
+	  	<forward name="maker_save_process_partymaker" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/process_partygroup_details_partymaker.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="process_page_partymaker" path="/template/common_template.jsp" >
+			<set-property property="rightFrame" value="//manualinput/customer/process_partygroup_details_partymaker.jsp"/>
+		   	<set-property property="title" value="title.manualinput.aa"/>
+	  	</forward>
+	  	<forward name="maker_update_customer_partymaker" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.customer"/>
+		<set-property property="rightFrame" value="/manualinput/customer/checker_update_partygroup_details_partymaker.jsp"/>
+		</forward>
+		<forward name="edit_customer_partymaker" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/common/ack_submit.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>	
+		<forward name="prepare_create_customer_partymaker" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/create_partygroup_details_partymaker.jsp"/>
+			<set-property property="title" value="title.misecurity"/>
+		</forward>
+		<forward name="create_checker_process_partymaker" path="/template/common_template.jsp">
+		<set-property property="rightFrame" value="/manualinput/customer/checker_partygroup_details_view_partymaker.jsp"/>
+	   	  	<set-property property="title" value="title.misecurity"/>
+		</forward>
+		 <!-- 	End:Uma Khot:Added for Valid Rating CR -->
+		<forward name="refresh_security_type" path="/manualinput/customer/refresh_security_type.jsp"/>
+		 
+<!-- 		<forward name="view_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/view_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.misecurity"/>
+		</forward> 
+		
+		<forward name="edit_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.misecurity"/>
+		</forward> 
+		
+		<forward name="delete_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details_summary.jsp"/>
+			<set-property property="title" value="title.misecurity"/>
+		</forward> --> 
+		
+		<forward name="update_session_add_co_borrower_details" path="/coBorrowerDetails.do?event=prepare_add_co_borrower_details"/>
+		
+		<forward name="update_session_view_co_borrower_details" path="/coBorrowerDetails.do?event=view_co_borrower_details"/>
+		
+		<forward name="update_session_edit_co_borrower_details" path="/coBorrowerDetails.do?event=edit_co_borrower_details"/>
+		
+		<forward name="update_session_remove_co_borrower_details" path="/coBorrowerDetails.do?event=remove_co_borrower_details"/>
+		
+		<forward name="return_create_co_borrower_details" path="/ManualInputCustomer.do?event=display_summary_details"/>
+		<forward name="return_co_borrower_details" path="/ManualInputCustomer.do?event=edit_summary_details"/>
+	</action>	
+	
+	<action path="/coBorrowerDetails" type="com.integrosys.cms.ui.manualinput.customer.ManualInputCustomerAction" 
+			name="CoBorrowerDetailsForm" scope="request">
+		<forward name="view_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/view_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.manualinput.customer"/>
+		</forward>
+		<forward name="edit_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.manualinput.customer"/>
+		</forward>	
+		<forward name="prepare_add_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.manualinput.customer"/>
+		</forward>
+		<forward name="prepare_edit_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.manualinput.customer"/>
+		</forward>
+		<forward name="add_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.manualinput.customer"/>
+		</forward>
+		<forward name="save_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.manualinput.customer"/>
+		</forward>
+		<forward name="remove_co_borrower_details" path="/template/common_template.jsp">
+			<set-property property="rightFrame" value="/manualinput/customer/edit_co_borrower_details.jsp"/>
+			<set-property property="title" value="title.manualinput.customer"/>
+		</forward>
+		
+		<forward name="return_create_co_borrower_details" path="/ManualInputCustomer.do?event=return_create_co_borrower_details"/>
+		<forward name="return_co_borrower_details" path="/ManualInputCustomer.do?event=return_co_borrower_details"/>
+		<forward name="return_cri_credit_details" path="/ManualInputCustomer.do?event=return_cri_credit_details"/>
+	</action>			
+<!--		Added by Sandeep Shinde on 28-Feb-2011 End-->
+	 
+		 <action path="/MIPartyGroup" type="com.integrosys.cms.ui.manualinput.partygroup.MIPartyGroupAction" name="MIPartyGroupForm" validate="false" scope="request">
+		<forward name="maker_list_party_group" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.partygroup"/>
+			<set-property property="rightFrame" value="/manualinput/partygroup/maker_list_partyGroup.jsp"/>
+		</forward>
+		
+		<forward name="checker_list_party_group" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.partygroup"/>
+			<set-property property="rightFrame" value="/manualinput/partygroup/checker_list_partyGroup.jsp"/>
+		</forward>
+		<forward name="maker_prepare_create_party_group" path="/template/common_template.jsp">
+			<set-property property="title" value="title.manualinput.partygroup"/>
+			<set-property property="rightFrame" value="/manualinput/partygroup/maker_create_partyGroup.jsp"/>
+		</forward>
+		<forward name="common_submit_page" path="/template/common_template.jsp">
+                <set-property property="rightFrame" value="/common/ack_submit.jsp"/>
+                <set-property property="title" value="title.manualinput.partygroup"/>
+            </forward>
+            <forward name="common_save_page" path="/template/common_template.jsp">
+                <set-property property="rightFrame" value="/common/ack_save.jsp"/>
+                <set-property property="title" value="title.manualinput.partygroup"/>
+            </forward>
+             <forward name="checker_party_group_page" path="/template/common_template.jsp">
+             <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/checker_partyGroup.jsp"/>
+            </forward>
+             <forward name="common_approve_page" path="/template/common_template.jsp">
+              <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+            </forward>
+            <forward name="maker_view_todo_page" path="/template/common_template.jsp">
+               <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_view_todo_partyGroup.jsp"/>
+            </forward>
+            <forward name="maker_view_page" path="/template/common_template.jsp">
+            <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_view_delete_partyGroup.jsp"/>
+            </forward>
+            <forward name="maker_view_party_group" path="/template/common_template.jsp">
+            <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_view_delete_partyGroup.jsp"/>
+            </forward>
+               <forward name="maker_edit_party_group_page" path="/template/common_template.jsp">
+                <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_edit_partyGroup.jsp"/>
+            </forward>
+            <forward name="common_reject_page" path="/template/common_template.jsp">
+             <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/common/ack_reject.jsp"/>
+            </forward>
+             <forward name="maker_prepare_resubmit" path="/template/common_template.jsp">
+                     <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_resubmit_edit_partyGroup.jsp"/>
+            </forward>
+            <forward name="maker_prepare_close" path="/template/common_template.jsp">
+                  <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_close_partyGroup.jsp"/>
+            </forward>
+            <forward name="common_close_page" path="/template/common_template.jsp">
+                 <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/common/ack_close.jsp"/>
+            </forward>
+            <forward name="partygroup_enable_disable_page" path="/template/common_template.jsp">
+                  <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_enable_disable_partyGroup.jsp"/>
+            </forward>
+             <forward name="checker_activate_party_group_read" path="/template/common_template.jsp">
+                  <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/checker_enable_partyGroup.jsp"/>
+            </forward>
+            <forward name="checker_activate_party_group" path="/template/common_template.jsp">
+                  <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+            </forward>
+              <forward name="work_in_process" path="/template/common_template.jsp">
+                 <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/common/wip.html"/>
+               
+            </forward>
+             <forward name="maker_view_save_page" path="/template/common_template.jsp">
+                <set-property property="title" value="title.manualinput.partygroup"/>
+                <set-property property="rightFrame" value="/manualinput/partygroup/maker_read_save_partyGroup.jsp"/>   
+            </forward>
+            
+          
+	  </action>
+	<action path="/MISecurity" type="com.integrosys.cms.ui.manualinput.security.SecDetailAction" name="SecDetailForm" validate="false" scope="request">
+	    <forward name="update_page"  path="/template/common_template.jsp" >
+   	  	<set-property property="rightFrame" value="/manualinput/security/misecurity_update.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+  	    <forward name="process_page" path="/template/common_template.jsp" >
+   	  	<set-property property="rightFrame" value="/manualinput/security/misecurity_process.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+  	    <forward name="close_page"   path="/template/common_template.jsp" >
+   	  	<set-property property="rightFrame" value="/manualinput/security/misecurity_close.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+	    <forward name="create_plg_detail" path="/MISecPledgorDetail.do?event=prepare_create" />	
+		<forward name="new_return" path="/MILimit.do?event=update_return" />
+	    <forward name="cancel_return" path="/MILmtSecDetail.do?event=prepare_create" />			
+	    <forward name="ack_submit" path="/template/common_template.jsp">
+   	  	<set-property property="rightFrame" value="/manualinput/security/ack_submit_sec.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+  	    <forward name="ack_save"   path="/template/common_template.jsp">
+   	  	<set-property property="rightFrame" value="/common/ack_save.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+  	    <forward name="ack_approve" path="/template/common_template.jsp">
+   	  	<set-property property="rightFrame" value="/common/ack_approve.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+  	    <forward name="ack_reject" path="/template/common_template.jsp">
+   	  	<set-property property="rightFrame" value="/common/ack_reject.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+	    <forward name="ack_close" path="/template/common_template.jsp">
+   	  	<set-property property="rightFrame" value="/common/ack_close.jsp"/>
+   	  	<set-property property="title" value="title.misecurity"/>
+  	    </forward>
+	    <forward name="wip" path="/template/common_template.jsp">
+	      <set-property property="rightFrame" value="/common/wip.html"/>
+	      <set-property property="title" value="title.misecurity"/>
+	    </forward>		
+	    <forward name="refresh_org" path="/manualinput/security/orglist.jsp" />
+ 	    <forward name="refresh_subtype" path="/manualinput/security/secsubtypelist.jsp" />
+ 	    <forward name="refresh_colcode" path="/manualinput/security/seccolcodelist.jsp" />
+	</action>
+
+	<action path="/MISecPledgorDetail" type="com.integrosys.cms.ui.manualinput.security.SecPledgorAction" name="SecPledgorDtlForm" validate="false" scope="request">
+	    <forward name="update_pledgor" path="/template/common_template.jsp">
+   	  	<set-property property="rightFrame" value="/manualinput/security/secpledgor_update.jsp"/>
+   	  	<set-property property="title" value="title.secpledgorlink"/> 
+  	    </forward>
+	    <forward name="update_return" path="/MISecurity.do?event=update_return" />	
+	</action>	
+
+	<action path="/MICustomerSearch" type="com.integrosys.cms.ui.manualinput.aa.AAListAction" name="CustomerSearchForm" validate="false" scope="request">
+	    <forward name="customer_search" path="/template/common_template.jsp">
+		 <set-property property="title" value="title.customer.search"/>
+             <set-property property="rightFrame" value="/customer/CustomerSearch.jsp"/>
+	    </forward>
+	    <forward name="customer_list" path="/template/common_template.jsp">
+		 <set-property property="title" value="title.customer.search"/>
+             <set-property property="rightFrame" value="/manualinput/aa/MIAAList.jsp"/>
+	    </forward>	
+	    <forward name="rejectedFlow_list_limit" path="/template/common_template.jsp">
+		     <set-property property="rightFrame" value="/manualinput/limit/limitListRejectedFlow.jsp"/>
+			 <set-property property="title" value="title.customer.search"/>
+		</forward>		
+	</action>
+		  
+    </action-mappings>
+    
+    <message-resources key="message-manualinput" parameter="ApplicationResources-manualinput"/>
+</struts-config>
